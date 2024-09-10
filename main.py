@@ -36,8 +36,7 @@ async def predict(data: InsuranceData):
         # Calculate BMI and add it to the input data
         input_data['BMI'] = input_data['Weight'] / (input_data['Height'] / 100) ** 2
         
-        # Drop Height and Weight as they are not needed after BMI calculation
-        #input_data = input_data.drop(columns=['Height', 'Weight'])
+    
        
         # Make prediction
         prediction = model.predict(input_data)
