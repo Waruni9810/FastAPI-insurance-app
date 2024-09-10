@@ -3,7 +3,7 @@ name: Deploy to Heroku
 on:
   push:
     branches:
-      - main  # Triggers deployment on push to the main branch
+      - main  # Triggers deployment when changes are pushed to the 'main' branch
 
 jobs:
   deploy:
@@ -23,8 +23,8 @@ jobs:
         pip install -r requirements.txt
 
     - name: Deploy to Heroku
-      run: |
-        git remote add heroku https://heroku:${{ secrets.HEROKU_API_KEY }}@git.heroku.com/fastapi-insurance-app.git
-        git push heroku HEAD:main
-      env:
-        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      uses: akhileshns/heroku-deploy@v3.12.12 # Use the heroku-deploy action
+      with:
+        heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+        heroku_app_name: "fastapi-insurance-app" 
+        heroku_email: "waruniranjala@gmail.com"  
