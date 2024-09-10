@@ -37,8 +37,8 @@ async def predict(data: InsuranceData):
         input_data['BMI'] = input_data['Weight'] / (input_data['Height'] / 100) ** 2
         
         # Drop Height and Weight as they are not needed after BMI calculation
-        input_data = input_data.drop(columns=['Height', 'Weight'])
-        
+        #input_data = input_data.drop(columns=['Height', 'Weight'])
+       
         # Make prediction
         prediction = model.predict(input_data)
         prediction_lkr = prediction[0] * 4.35  # Convert to LKR
