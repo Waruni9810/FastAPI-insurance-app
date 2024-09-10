@@ -23,6 +23,8 @@ jobs:
         pip install -r requirements.txt
 
     - name: Deploy to Heroku
-      run: git push https://heroku:$HEROKU_API_KEY@git.heroku.com/fastapi-insurance-app.git HEAD:main
+      run: |
+        git remote add heroku https://heroku:${{ secrets.HEROKU_API_KEY }}@git.heroku.com/fastapi-insurance-app.git
+        git push heroku HEAD:main
       env:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
